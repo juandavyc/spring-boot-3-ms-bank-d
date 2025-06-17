@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: loans
+  datasource:
+    url: jdbc:h2:mem:loansdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sc
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
