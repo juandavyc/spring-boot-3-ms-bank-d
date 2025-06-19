@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: accounts
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sc
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  config:
+    import:
+      - "application_prod.yml"
+      - "application_qa.yml"
+  profiles:
+    active:
+      - "qa"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+build:
+  version: "1.0"
+
+# Custom properties
+accounts:
+  message: "Welcome to Bank accounts related DEV APIs"
+  contactDetails:
+    name: "juan david"
+    email: "juan@juandavyc.com"
+  onCallSupport:
+    - (57) 300-000-0000
+    - (57) 300-000-0000

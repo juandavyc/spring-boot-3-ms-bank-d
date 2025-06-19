@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to Bank loans related QA APIs"
+  contactDetails:
+    name: "juan david"
+    email: "qa@juandavyc.com"
+  onCallSupport:
+    - (57) 300-000-0000
+    - (57) 300-000-0000

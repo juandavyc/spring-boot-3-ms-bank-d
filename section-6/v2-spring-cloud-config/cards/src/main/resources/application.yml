@@ -1,0 +1,41 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: "cards"
+  profiles:
+    active: "${SPRING_PROFILES_ACTIVE:default}"
+  datasource:
+    url: jdbc:h2:mem:carddb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sc
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  config:
+    import: "optional:configserver:${SPRING_CONFIG_IMPORT:http://localhost:8071/}"
+
+
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "busrefresh"

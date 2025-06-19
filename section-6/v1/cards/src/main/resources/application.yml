@@ -1,0 +1,40 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: cards
+
+  datasource:
+    url: jdbc:h2:mem:carddb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sc
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  profiles:
+    active:
+      - "qa"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to Bank cards related DEV APIs"
+  contactDetails:
+    name: "juan david"
+    email: "dev@juandavyc.com"
+  onCallSupport:
+    - (57) 300-000-0000
+    - (57) 300-000-0000
