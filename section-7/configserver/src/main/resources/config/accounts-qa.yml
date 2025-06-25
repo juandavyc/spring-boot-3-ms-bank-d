@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to Bank accounts related QA APIs"
+  contactDetails:
+    name: "juan david"
+    email: "qa@juandavyc.com"
+  onCallSupport:
+    - (57) 300-000-0000
+    - (57) 300-000-0000
