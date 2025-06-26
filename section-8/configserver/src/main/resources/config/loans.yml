@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to Bank loans related DEV APIs"
+  contactDetails:
+    name: "juan david"
+    email: "dev@juandavyc.com"
+  onCallSupport:
+    - (57) 300-000-0000
+    - (57) 300-000-0000<
