@@ -1,0 +1,21 @@
+server:
+  port: 8070
+spring:
+  application:
+    name: "eurekaserver"
+  config:
+    import: "configserver:${SPRING_CONFIG_IMPORT:http://localhost:8071/}"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
