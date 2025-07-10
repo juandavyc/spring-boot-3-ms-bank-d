@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: "gatewayserver"
+
+  config:
+    import: "configserver:${SPRING_CONFIG_IMPORT:http://localhost:8071/}"
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              lower-case-service-id: true
+          httpclient:
+            connect-timeout: 1000
+            response-timeout: 10s
+
+  data:
+    redis:
+      connect-timeout: 2s
+      host: localhost
+      port: 6379
+      timeout: 1s
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI}:http://127.0.0.1:7080/realms/master/protocol/openid-connect/certs"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  info:
+    env:
+      enabled: true
+  endpoint:
+    gateway:
+      access: unrestricted
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+
+
+info:
+  app:
+    name: "gatewayserver"
+    description: "bank gateway server"
+    version: "1.0.0"
+
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
